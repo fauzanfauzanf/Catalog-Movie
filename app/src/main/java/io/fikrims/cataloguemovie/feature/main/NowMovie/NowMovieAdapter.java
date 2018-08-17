@@ -2,6 +2,7 @@ package io.fikrims.cataloguemovie.feature.main.NowMovie;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
 import io.fikrims.cataloguemovie.R;
 import io.fikrims.cataloguemovie.data.model.response.Movie;
 import io.fikrims.cataloguemovie.data.model.response.MovieResult;
+import io.fikrims.cataloguemovie.feature.detail_movie.DetailActivity;
 import io.fikrims.cataloguemovie.utils.Constant;
 
 public class NowMovieAdapter extends RecyclerView.Adapter<NowMovieAdapter.ViewHolder> {
@@ -60,6 +62,8 @@ public class NowMovieAdapter extends RecyclerView.Adapter<NowMovieAdapter.ViewHo
         ImageView imageMovie;
         @BindView(R.id.text_title)
         TextView textTitle;
+        @BindView(R.id.text_rating)
+        TextView textRating;
         ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -73,7 +77,14 @@ public class NowMovieAdapter extends RecyclerView.Adapter<NowMovieAdapter.ViewHo
                     .into(imageMovie);
             imageMovie.setPadding(0,0,0,0);
 
+            itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(itemView.getContext(), DetailActivity.class);
+                intent.putExtra(Constant.Utils.MOVIE_DETAIL, movieResult);
+                itemView.getContext().startActivity(intent);
+            });
+
             textTitle.setText(movieResult.getTitle());
+            textRating.setText("Rating : "+movieResult.getVoteAverage());
         }
     }
 }

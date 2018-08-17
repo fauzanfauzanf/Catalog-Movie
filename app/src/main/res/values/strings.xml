@@ -6,6 +6,7 @@
     <string name="text_now">Now Playing</string>
     <string name="text_upcoming">Upcoming</string>
     <string name="search_hint">Find Movie</string>
+    <string name="overview">Description</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

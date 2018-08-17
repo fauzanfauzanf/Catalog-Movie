@@ -59,6 +59,8 @@ public class SearchMovieAdapter extends RecyclerView.Adapter<SearchMovieAdapter.
         ImageView imageMovie;
         @BindView(R.id.text_title)
         TextView textTitle;
+        @BindView(R.id.text_rating)
+        TextView textRating;
         ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -73,6 +75,7 @@ public class SearchMovieAdapter extends RecyclerView.Adapter<SearchMovieAdapter.
             imageMovie.setPadding(0,0,0,0);
 
             textTitle.setText(movieResult.getTitle());
+            textRating.setText("");
         }
     }
 }
