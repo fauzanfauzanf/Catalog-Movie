@@ -2,6 +2,7 @@ package io.fikrims.cataloguemovie.feature.search;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.fikrims.cataloguemovie.R;
 import io.fikrims.cataloguemovie.data.model.response.MovieResult;
+import io.fikrims.cataloguemovie.feature.detail_movie.DetailActivity;
 import io.fikrims.cataloguemovie.utils.Constant;
 
 public class SearchMovieAdapter extends RecyclerView.Adapter<SearchMovieAdapter.ViewHolder> {
@@ -73,6 +75,12 @@ public class SearchMovieAdapter extends RecyclerView.Adapter<SearchMovieAdapter.
                     .error(R.drawable.ic_refresh)
                     .into(imageMovie);
             imageMovie.setPadding(0,0,0,0);
+
+            itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(itemView.getContext(), DetailActivity.class);
+                intent.putExtra(Constant.Utils.MOVIE_DETAIL, movieResult);
+                itemView.getContext().startActivity(intent);
+            });
 
             textTitle.setText(movieResult.getTitle());
             textRating.setText("");
