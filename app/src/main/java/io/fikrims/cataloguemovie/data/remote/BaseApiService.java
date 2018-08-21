@@ -6,10 +6,6 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
-/**
- * Created by mfahm on 11/24/2017.
- */
-
 public interface BaseApiService {
     @GET("movie/now_playing")
     Flowable<Movie> getNowPlayingMovie(@Query("api_key") String apiKey);
